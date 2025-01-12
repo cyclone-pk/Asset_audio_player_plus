@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  final assetsAudioPlayer = AssetsAudioPlayer();
+  final assetsAudioPlayer = AssetsAudioPlayerPlus();
   int count = 0;
   int playlistCount = 0;
   Audio currentAudio = Audio('assets/audios/water.mp3');

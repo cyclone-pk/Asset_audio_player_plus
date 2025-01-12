@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
     ),
   ];
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
   final List<StreamSubscription> _subscriptions = [];
 
   @override
@@ -188,7 +188,7 @@ class _MyAppState extends State<MyApp> {
                         padding: EdgeInsets.all(18),
                         margin: EdgeInsets.all(18),
                         onPressed: () {
-                          AssetsAudioPlayer.playAndForget(
+                          AssetsAudioPlayerPlus.playAndForget(
                               Audio('assets/audios/horn.mp3'));
                         },
                         child: Icon(

@@ -1,4 +1,4 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:assets_audio_player_plus/assets_audio_player.dart';
 import 'package:flutter/widgets.dart';
 
 enum _PlayingBuilderType {
@@ -36,7 +36,7 @@ typedef PlayerStateBuilder = Widget Function(
     BuildContext context, PlayerState playerState);
 
 class PlayerBuilder extends StatefulWidget {
-  final AssetsAudioPlayer player;
+  final AssetsAudioPlayerPlus player;
   final dynamic builder;
   final _PlayingBuilderType builderType;
 
@@ -145,7 +145,7 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
       case _PlayingBuilderType.volume:
         return StreamBuilder(
           stream: widget.player.volume,
-          initialData: AssetsAudioPlayer.defaultVolume,
+          initialData: AssetsAudioPlayerPlus.defaultVolume,
           builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
@@ -158,7 +158,7 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
         return StreamBuilder(
           stream: widget.player.currentPosition,
           initialData: Duration.zero,
-            builder: (context, snap) {
+          builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
             } else {
@@ -169,8 +169,8 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
       case _PlayingBuilderType.playSpeed:
         return StreamBuilder(
           stream: widget.player.playSpeed,
-          initialData: AssetsAudioPlayer.defaultPlaySpeed,
-           builder: (context, snap) {
+          initialData: AssetsAudioPlayerPlus.defaultPlaySpeed,
+          builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
             } else {
@@ -181,7 +181,7 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
       case _PlayingBuilderType.forwardRewindSpeed:
         return StreamBuilder(
           stream: widget.player.forwardRewindSpeed,
-           builder: (context, snap) {
+          builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
             } else {
@@ -203,7 +203,7 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
       case _PlayingBuilderType.realtimePlayingInfos:
         return StreamBuilder(
           stream: widget.player.realtimePlayingInfos,
-           builder: (context, snap) {
+          builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
             } else {
@@ -215,7 +215,7 @@ class _PlayerBuilderState extends State<PlayerBuilder> {
         return StreamBuilder(
           stream: widget.player.playerState,
           initialData: PlayerState.stop,
-            builder: (context, snap) {
+          builder: (context, snap) {
             if (snap.hasData) {
               return widget.builder(context, snap.data)!;
             } else {

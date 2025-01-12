@@ -57,76 +57,78 @@ class RecorderExampleState extends State<RecorderExample> {
     return Center(
       child: Padding(
         padding: EdgeInsets.all(8.0),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
-                Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextButton(
-                  onPressed: () {
-                    switch (_currentStatus) {
-                      case RecordingStatus.Initialized:
-                        {
-                          _start();
-                          break;
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      onPressed: () {
+                        switch (_currentStatus) {
+                          case RecordingStatus.Initialized:
+                            {
+                              _start();
+                              break;
+                            }
+                          case RecordingStatus.Recording:
+                            {
+                              _pause();
+                              break;
+                            }
+                          case RecordingStatus.Paused:
+                            {
+                              _resume();
+                              break;
+                            }
+                          case RecordingStatus.Stopped:
+                            {
+                              _init();
+                              break;
+                            }
+                          default:
+                            break;
                         }
-                      case RecordingStatus.Recording:
-                        {
-                          _pause();
-                          break;
-                        }
-                      case RecordingStatus.Paused:
-                        {
-                          _resume();
-                          break;
-                        }
-                      case RecordingStatus.Stopped:
-                        {
-                          _init();
-                          break;
-                        }
-                      default:
-                        break;
-                    }
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.lightBlue,
+                      },
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.lightBlue,
+                      ),
+                      child: _buildText(_currentStatus),
+                    ),
                   ),
-                  child: _buildText(_currentStatus),
-                ),
+                  TextButton(
+                    onPressed:
+                        _currentStatus != RecordingStatus.Unset ? _stop : null,
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blueAccent.withOpacity(0.5),
+                    ),
+                    child: Text('Stop', style: TextStyle(color: Colors.white)),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  TextButton(
+                    onPressed: onPlayAudio,
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blueAccent.withOpacity(0.5),
+                    ),
+                    child: Text('Play', style: TextStyle(color: Colors.white)),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed:
-                    _currentStatus != RecordingStatus.Unset ? _stop : null,
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.blueAccent.withOpacity(0.5),
-                ),
-                child: Text('Stop', style: TextStyle(color: Colors.white)),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              TextButton(
-                onPressed: onPlayAudio,
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.blueAccent.withOpacity(0.5),
-                ),
-                child: Text('Play', style: TextStyle(color: Colors.white)),
-              ),
-            ],
-          ),
-          Text('Status : $_currentStatus'),
-          Text('Avg Power: ${_current?.metering?.averagePower}'),
-          Text('Peak Power: ${_current?.metering?.peakPower}'),
-          Text('File path of the record: ${_current?.path}'),
-          Text('Format: ${_current?.audioFormat}'),
-          Text('isMeteringEnabled: ${_current?.metering?.isMeteringEnabled}'),
-          Text('Extension : ${_current?.extension}'),
-          Text('Audio recording duration : ${_current?.duration.toString()}')
-        ]),
+              Text('Status : $_currentStatus'),
+              Text('Avg Power: ${_current?.metering?.averagePower}'),
+              Text('Peak Power: ${_current?.metering?.peakPower}'),
+              Text('File path of the record: ${_current?.path}'),
+              Text('Format: ${_current?.audioFormat}'),
+              Text(
+                  'isMeteringEnabled: ${_current?.metering?.isMeteringEnabled}'),
+              Text('Extension : ${_current?.extension}'),
+              Text(
+                  'Audio recording duration : ${_current?.duration.toString()}')
+            ]),
       ),
     );
   }
@@ -264,7 +266,7 @@ class RecorderExampleState extends State<RecorderExample> {
   }
 
   void onPlayAudio() async {
-    final assetsAudioPlayer = AssetsAudioPlayer();
+    final assetsAudioPlayer = AssetsAudioPlayerPlus();
     if (_current?.path != null) {
       await assetsAudioPlayer.open(Audio.file(_current!.path!));
     }

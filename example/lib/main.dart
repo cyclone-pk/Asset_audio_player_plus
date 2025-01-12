@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:assets_audio_player/assets_audio_player_plus.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'player/PlayingControls.dart';
@@ -8,7 +8,7 @@ import 'player/PositionSeekWidget.dart';
 import 'player/SongsSelector.dart';
 
 void main() {
-  AssetsAudioPlayer.setupNotificationsOpenAction((notification) {
+  AssetsAudioPlayerPlus.setupNotificationsOpenAction((notification) {
     return true;
   });
 
@@ -30,7 +30,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   //final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
-  late AssetsAudioPlayer _assetsAudioPlayer;
+  late AssetsAudioPlayerPlus _assetsAudioPlayer;
   final List<StreamSubscription> _subscriptions = [];
   final audios = <Audio>[
     //Audio.network(
@@ -127,7 +127,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
+    _assetsAudioPlayer = AssetsAudioPlayerPlus.newPlayer();
     //_subscriptions.add(_assetsAudioPlayer.playlistFinished.listen((data) {
     //  print('finished : $data');
     //}));
@@ -226,7 +226,7 @@ class _MyAppState extends State<MyApp> {
                           padding: EdgeInsets.all(18),
                           margin: EdgeInsets.all(18),
                           onPressed: () {
-                            AssetsAudioPlayer.playAndForget(
+                            AssetsAudioPlayerPlus.playAndForget(
                                 Audio('assets/audios/horn.mp3'));
                           },
                           child: Icon(

@@ -103,7 +103,7 @@ class AudioWidget extends StatefulWidget {
 }
 
 class _AudioWidgetState extends State<AudioWidget> {
-  late AssetsAudioPlayer _player;
+  late AssetsAudioPlayerPlus _player;
   StreamSubscription? _currentPositionSubscription;
   StreamSubscription? _onReadyToPlaySubscription;
   StreamSubscription? _playlistAudioFinishedSubscription;
@@ -112,7 +112,7 @@ class _AudioWidgetState extends State<AudioWidget> {
   @override
   void initState() {
     super.initState();
-    _player = AssetsAudioPlayer.newPlayer();
+    _player = AssetsAudioPlayerPlus.newPlayer();
     _open();
   }
 

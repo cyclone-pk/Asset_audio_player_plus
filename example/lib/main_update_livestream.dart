@@ -22,7 +22,7 @@ class _MyAppState extends State {
     ),
   );
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
 
   @override
   void initState() {

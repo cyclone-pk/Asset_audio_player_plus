@@ -1,3 +1,8 @@
+## 3.1.2
+
+- updated uuid to make it work with flutter sound.
+
+
 ## 3.1.1
 
 - fix startup crash issue for some Android devices.

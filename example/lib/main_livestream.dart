@@ -60,7 +60,7 @@ class Player extends StatefulWidget {
 }
 
 class _PlayerState extends State<Player> {
-  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  final AssetsAudioPlayerPlus _player = AssetsAudioPlayerPlus.newPlayer();
 
   @override
   void initState() {

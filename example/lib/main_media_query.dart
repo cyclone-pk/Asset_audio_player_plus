@@ -9,7 +9,7 @@ import 'player/SongsSelector.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 
 void main() {
-  AssetsAudioPlayer.setupNotificationsOpenAction((notification) {
+  AssetsAudioPlayerPlus.setupNotificationsOpenAction((notification) {
     print(notification.audioId);
     return true;
   });
@@ -60,7 +60,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   //final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
-  AssetsAudioPlayer get _assetsAudioPlayer => AssetsAudioPlayer.withId('music');
+  AssetsAudioPlayerPlus get _assetsAudioPlayer =>
+      AssetsAudioPlayerPlus.withId('music');
   final List<StreamSubscription> _subscriptions = [];
 
   @override
@@ -90,7 +91,7 @@ class _MyAppState extends State<MyApp> {
     //  print('isplaying : $isplaying');
     //}));
     _subscriptions
-        .add(AssetsAudioPlayer.addNotificationOpenAction((notification) {
+        .add(AssetsAudioPlayerPlus.addNotificationOpenAction((notification) {
       return false;
     }));
     super.initState();
@@ -172,7 +173,7 @@ class _MyAppState extends State<MyApp> {
                           padding: EdgeInsets.all(18),
                           margin: EdgeInsets.all(18),
                           onPressed: () {
-                            AssetsAudioPlayer.playAndForget(
+                            AssetsAudioPlayerPlus.playAndForget(
                                 Audio('assets/audios/horn.mp3'));
                           },
                           child: Icon(
@@ -216,8 +217,9 @@ class _MyAppState extends State<MyApp> {
                                     },
                                     onNext: () {
                                       //_assetsAudioPlayer.forward(Duration(seconds: 10));
-                                      _assetsAudioPlayer.next(keepLoopMode: true
-                                          /*keepLoopMode: false*/);
+                                      _assetsAudioPlayer.next(
+                                          keepLoopMode:
+                                              true /*keepLoopMode: false*/);
                                     },
                                     onPrevious: () {
                                       _assetsAudioPlayer.previous(

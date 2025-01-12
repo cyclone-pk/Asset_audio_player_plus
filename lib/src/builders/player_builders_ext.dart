@@ -1,7 +1,7 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:assets_audio_player_plus/assets_audio_player.dart';
 import 'package:flutter/widgets.dart';
 
-extension AssetAudioPlayerBuilder on AssetsAudioPlayer {
+extension AssetAudioPlayerBuilder on AssetsAudioPlayerPlus {
   PlayerBuilder builderIsPlaying({
     Key? key,
     required PlayingWidgetBuilder builder,

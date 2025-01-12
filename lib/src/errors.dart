@@ -5,7 +5,7 @@ enum AssetsAudioPlayerErrorType { Network, Player }
 
 class ErrorHandler {
   final AssetsAudioPlayerError error;
-  final AssetsAudioPlayer player;
+  final AssetsAudioPlayerPlus player;
   final Duration? currentPosition;
   final Playlist? playlist;
   final int? playlistIndex;

@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
     ),
   ];
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
   final List<StreamSubscription> _subscriptions = [];
 
   @override
@@ -191,7 +191,7 @@ class _MyAppState extends State<MyApp> {
                         padding: EdgeInsets.all(18),
                         margin: EdgeInsets.all(18),
                         onPressed: () {
-                          AssetsAudioPlayer.playAndForget(
+                          AssetsAudioPlayerPlus.playAndForget(
                               Audio('assets/audios/horn.mp3'));
                         },
                         child: Icon(
@@ -309,7 +309,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 StreamBuilder(
                     stream: _assetsAudioPlayer.volume,
-                    initialData: AssetsAudioPlayer.defaultVolume,
+                    initialData: AssetsAudioPlayerPlus.defaultVolume,
                     builder: (context, AsyncSnapshot<double> snapshot) {
                       if (!snapshot.hasData) return const SizedBox();
                       final volume = snapshot.data!;
@@ -335,7 +335,7 @@ class _MyAppState extends State<MyApp> {
                     }),
                 StreamBuilder(
                     stream: _assetsAudioPlayer.playSpeed,
-                    initialData: AssetsAudioPlayer.defaultPlaySpeed,
+                    initialData: AssetsAudioPlayerPlus.defaultPlaySpeed,
                     builder: (context, AsyncSnapshot<double> snapshot) {
                       if (!snapshot.hasData) return const SizedBox();
                       final playSpeed = snapshot.data!;

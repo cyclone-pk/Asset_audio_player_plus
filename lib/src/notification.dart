@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import '../assets_audio_player.dart';
 import 'utils.dart';
 
-typedef NotificationAction = void Function(AssetsAudioPlayer player);
+typedef NotificationAction = void Function(AssetsAudioPlayerPlus player);
 
 class AndroidResDrawable {
   final String name;

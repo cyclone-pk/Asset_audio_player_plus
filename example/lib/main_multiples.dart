@@ -41,7 +41,8 @@ class _MyAppState extends State<MyApp> {
     MyAudio(
         name: 'Electronic',
         audio: Audio('assets/audios/electronic.mp3'),
-        imageUrl: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_68585523.jpg'),
+        imageUrl:
+            'https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_68585523.jpg'),
     MyAudio(
         name: 'HipHop',
         audio: Audio('assets/audios/hiphop.mp3'),
@@ -55,10 +56,11 @@ class _MyAppState extends State<MyApp> {
     MyAudio(
         name: 'Instrumental',
         audio: Audio('assets/audios/instrumental.mp3'),
-        imageUrl: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_68585523.jpg'),
+        imageUrl:
+            'https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_68585523.jpg'),
   ];
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
 
   @override
   void initState() {
@@ -122,7 +124,8 @@ class PlayerWidget extends StatefulWidget {
 }
 
 class _PlayerWidgetState extends State<PlayerWidget> {
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer =
+      AssetsAudioPlayerPlus.newPlayer();
 
   @override
   Widget build(BuildContext context) {

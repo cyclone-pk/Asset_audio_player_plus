@@ -18,8 +18,8 @@ class VolumeSelector extends StatelessWidget {
           ),
           Expanded(
             child: NeumorphicSlider(
-              min: AssetsAudioPlayer.minVolume,
-              max: AssetsAudioPlayer.maxVolume,
+              min: AssetsAudioPlayerPlus.minVolume,
+              max: AssetsAudioPlayerPlus.maxVolume,
               value: volume,
               style:
                   SliderStyle(variant: Colors.grey, accent: Colors.grey[500]),

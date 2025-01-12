@@ -35,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String? downloadingProgress;
-  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  final AssetsAudioPlayerPlus _player = AssetsAudioPlayerPlus.newPlayer();
 
   final Playlist playlist = Playlist(audios: [
     Audio.network(mp3Url, metas: Metas(title: 'hello world')),

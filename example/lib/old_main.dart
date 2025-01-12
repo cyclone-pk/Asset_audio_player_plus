@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
     Audio('assets/audios/song3.mp3'),
   ];
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  AssetsAudioPlayer.newPlayer()
+                  AssetsAudioPlayerPlus.newPlayer()
                       .open(Audio('assets/audios/cat.wav'));
                 },
                 child: Text('Small Song in parallel'),
@@ -160,7 +160,7 @@ class _MyAppState extends State<MyApp> {
               ),
               StreamBuilder(
                   stream: _assetsAudioPlayer.volume,
-                  initialData: AssetsAudioPlayer.defaultVolume,
+                  initialData: AssetsAudioPlayerPlus.defaultVolume,
                   builder: (context, AsyncSnapshot<double> snapshot) {
                     if (!snapshot.hasData) return const SizedBox();
                     final volume = snapshot.data!;
@@ -171,8 +171,8 @@ class _MyAppState extends State<MyApp> {
                         Text(' - '),
                         Expanded(
                           child: Slider(
-                            min: AssetsAudioPlayer.minVolume,
-                            max: AssetsAudioPlayer.maxVolume,
+                            min: AssetsAudioPlayerPlus.minVolume,
+                            max: AssetsAudioPlayerPlus.maxVolume,
                             value: volume,
                             onChanged: (value) {
                               _assetsAudioPlayer.setVolume(value);

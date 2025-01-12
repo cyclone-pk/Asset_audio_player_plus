@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String? downloadingProgress;
 
-  final AssetsAudioPlayer _player = AssetsAudioPlayer.newPlayer();
+  final AssetsAudioPlayerPlus _player = AssetsAudioPlayerPlus.newPlayer();
 
   @override
   Widget build(BuildContext context) {

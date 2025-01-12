@@ -36,7 +36,7 @@ class _MyAppState extends State {
 
   final playlist = Playlist(audios: [rock]);
 
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayerPlus _assetsAudioPlayer = AssetsAudioPlayerPlus();
 
   @override
   void initState() {

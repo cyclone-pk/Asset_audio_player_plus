@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:assets_audio_player_plus/assets_audio_player.dart';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -41,14 +41,14 @@ class AssetsAudioPlayerGroup {
   final PlayerGroupCallback? onNotificationPause;
   final PlayerGroupCallback? onNotificationStop;
 
-  final Map<Audio, AssetsAudioPlayer> _audiosWithPlayers = {};
+  final Map<Audio, AssetsAudioPlayerPlus> _audiosWithPlayers = {};
 
   // copy of _audiosWithPlayers
-  Map<Audio, AssetsAudioPlayer> get audiosWithPlayers =>
+  Map<Audio, AssetsAudioPlayerPlus> get audiosWithPlayers =>
       Map.from(_audiosWithPlayers);
 
   List<Audio> get audios => _audiosWithPlayers.keys.toList();
-  List<AssetsAudioPlayer> get players => _audiosWithPlayers.values.toList();
+  List<AssetsAudioPlayerPlus> get players => _audiosWithPlayers.values.toList();
 
   final List<StreamSubscription> _subscriptions = [];
 
@@ -126,7 +126,7 @@ class AssetsAudioPlayerGroup {
     Duration? seek,
     double? playSpeed,
   }) async {
-    final player = AssetsAudioPlayer.newPlayer();
+    final player = AssetsAudioPlayerPlus.newPlayer();
     await player.open(
       audio,
       showNotification: false,
@@ -155,12 +155,12 @@ class AssetsAudioPlayerGroup {
     await _onPlayersChanged();
   }
 
-  Future<void> _removePlayer(AssetsAudioPlayer player) async {
+  Future<void> _removePlayer(AssetsAudioPlayerPlus player) async {
     _audiosWithPlayers.removeWhere((audio, p) => player == p);
     await _onPlayersChanged();
   }
 
-  Future<void> _addPlayer(Audio audio, AssetsAudioPlayer player) async {
+  Future<void> _addPlayer(Audio audio, AssetsAudioPlayerPlus player) async {
     late StreamSubscription finishedSubscription;
     finishedSubscription = player.playlistFinished.listen((finished) {
       if (finished) {
@@ -233,7 +233,7 @@ class AssetsAudioPlayerGroup {
     return _play();
   }
 
-  Future<void> _play({AssetsAudioPlayer? except}) async {
+  Future<void> _play({AssetsAudioPlayerPlus? except}) async {
     for (final player in players) {
       if (player != except) {
         await player.play();
@@ -247,7 +247,7 @@ class AssetsAudioPlayerGroup {
     return _pause();
   }
 
-  Future<void> _pause({AssetsAudioPlayer? except}) async {
+  Future<void> _pause({AssetsAudioPlayerPlus? except}) async {
     for (final player in players) {
       if (player != except) {
         await player.pause();
@@ -261,10 +261,10 @@ class AssetsAudioPlayerGroup {
     return _stop();
   }
 
-  Future<void> _stop({AssetsAudioPlayer? except}) async {
+  Future<void> _stop({AssetsAudioPlayerPlus? except}) async {
     //copy _players because _stop remove the player from the list
     final copyList = List.from(players);
-    for (AssetsAudioPlayer player in copyList) {
+    for (AssetsAudioPlayerPlus player in copyList) {
       if (player != except) {
         await player.stop();
       }
